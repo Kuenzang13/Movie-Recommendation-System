@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineStream</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="nav nav-centered">
+      <div class="brand">
+        <img src="C:\Users\Hp\OneDrive\Pictures\Screenshots\Screenshot 2025-10-08 183317.png" alt="CineStream" class="logo" />
+        <span class="brand-name">CineStream</span>
+      </div>
+      <div class="center-search-bar">
+        <span class="search-icon">
+          <!-- You can use an SVG icon or FontAwesome here -->
+          <svg width="20" height="20" fill="none" stroke="#73809a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="7"/><line x1="16" y1="16" x2="13.5" y2="13.5"/></svg>
+        </span>
+        <input type="text" id="searchInput" placeholder="Search movies, shows, actors..." aria-label="Search movies" />
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" title="Notifications">
+          <svg width="20" height="20" fill="none" stroke="#73809a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2a6 6 0 0 1 6 6v3.5l1 2V14H3v-0.5l1-2V8a6 6 0 0 1 6-6z"/><path d="M7 16a3 3 0 0 0 6 0"/></svg>
+        </button>
+        <button class="icon-btn user-btn" title="Account">
+          <svg width="20" height="20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="4"/><path d="M2 18c0-3.3 5.3-5 8-5s8 1.7 8 5"/></svg>
+        </button>
+        <button class="btn btn-signin">Sign In</button>
+      </div>
+    </div>
+    <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1>Discover your next favorite movie</h1>
+        <p>Handpicked recommendations that match your mood and taste.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="cta-watch">Watch now</button>
+          <button class="btn btn-secondary" id="cta-watchlist">Add to watchlist</button>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <!-- Add filter/sort bar here -->
+  <div class="filter-sort-bar">
+    <div class="filters">
+      <button class="filter-btn">
+        <svg width="18" height="18" fill="none" stroke="#73809a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="15" y2="6"/><line x1="6" y1="3" x2="6" y2="15"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Filters
+      </button>
+      <span class="genre-label">Genre:</span>
+      <button class="genre-btn active">All</button>
+      <button class="genre-btn">Action</button>
+      <button class="genre-btn">Comedy</button>
+      <button class="genre-btn">Drama</button>
+    </div>
+    <div class="sort">
+      <span class="sort-label">Sort by:</span>
+      <select class="sort-select">
+        <option>Popularity</option>
+        <option>Rating</option>
+        <option>Newest</option>
+        <option>Alphabetical</option>
+      </select>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="section">
+      <div class="section-header">
+        <h2>Trending now</h2>
+        <a href="#" class="view-all" id="viewAllTrending">View all</a>
+      </div>
+      <div class="grid" id="trendingGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2 id="becauseTitle">Because you watched "Inception"</h2>
+      </div>
+      <div class="grid" id="relatedGrid"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <h2>CineStream picks</h2>
+      </div>
+      <div class="grid" id="picksGrid"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-columns">
+      <div>
+        <h3>CineStream</h3>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Sci-Fi</a></li>
+          <li><a href="#">Drama</a></li>
+          <li><a href="#">Romance</a></li>
+          <li><a href="#">Thriller</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Help Center</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="socials">
+        <a href="#" aria-label="Twitter">X</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+      <p>© 2024 CineStream. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <template id="cardTemplate">
+    <article class="card">
+      <div class="thumb">
+        <img src="" alt="" />
+        <button class="watchlist-btn" title="Add to watchlist">+</button>
+      </div>
+      <div class="card-body">
+        <h4 class="title"></h4>
+        <div class="meta">
+          <div class="tags"></div>
+          <div class="rating" aria-label="Rating"></div>
+        </div>
+      </div>
+    </article>
+  </template>
+
+  <div class="modal" id="detailModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-body">
+        <img id="modalImg" src="" alt="" />
+        <div class="modal-info">
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+          <div class="modal-tags" id="modalTags"></div>
+          <div class="modal-actions">
+            <button class="btn btn-primary" id="modalPlay">Play</button>
+            <button class="btn btn-secondary" id="modalAdd">Add to watchlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
